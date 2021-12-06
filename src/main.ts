@@ -41,7 +41,8 @@ const retryMain = async (url?: string | null): Promise<string> => {
     return await retryMain(newURL); // not sure if await is needed here or not, it will chain anyways. -> https://github.com/ketan-10/Testing/blob/master/coroutine-async-await/retry-promise.js
   }
 }
-
-const html = await retryMain(null);
-const app = document.querySelector<HTMLDivElement>('#content')!  
-app.innerHTML = html;
+(async () => {
+  const html = await retryMain(null);
+  const app = document.querySelector<HTMLDivElement>('#content')!  
+  app.innerHTML = html;
+})();
